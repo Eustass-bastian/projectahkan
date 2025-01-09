@@ -1,0 +1,1830 @@
+/* Font imports */
+@font-face {
+  font-family: "Doner";
+  src: url("../fonts/Doner.ttf") format("woff2"),
+    url("../fonts/Doner.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Aptos";
+  src: url("../fonts/Aptos.ttf") format("woff2"),
+    url("../fonts/Aptos.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.logo img {
+  height: 30px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  font-family: "Aptos", Arial, sans-serif;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #006b8f;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.7rem 1.5rem;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: opacity 0.3s ease;
+  font-family: "Aptos", Arial, sans-serif;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.shop-btn {
+  background-color: #006b8f;
+  color: white;
+}
+
+.support-btn {
+  background-color: #00a0dc;
+  color: white;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background-color: #333;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+  .nav-links {
+    gap: 1.5rem;
+  }
+
+  .btn {
+    padding: 0.5rem 1rem;
+  }
+}
+
+.desktop-nav {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.mobile-menu {
+  display: none;
+  width: 100%;
+  order: 3;
+  background: white;
+  z-index: 99;
+}
+
+.mobile-buttons {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .menu-toggle {
+    display: flex;
+    order: 1;
+    z-index: 100;
+    cursor: pointer;
+  }
+
+  .logo {
+    order: 0;
+  }
+
+  .desktop-nav,
+  .desktop-buttons {
+    display: none;
+  }
+
+  .mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .mobile-menu.active {
+    display: block;
+  }
+
+  .mobile-menu .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .mobile-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .mobile-buttons .btn {
+    width: 200px;
+    text-align: center;
+  }
+
+  /* Hamburger animation */
+  .menu-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: calc(100svh - 75px); /* Subtract navbar height */
+  display: flex;
+  align-items: center;
+  color: white;
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../images/tinywow_BG_72718971.webp");
+  background-size: cover;
+  background-position: center;
+  transform: scaleX(-1);
+  z-index: -1;
+}
+
+.hero-content {
+  margin: auto;
+  width: 90%;
+  margin-top: 4.5rem;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: 4.5rem;
+  line-height: 1.2;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  font-family: "Doner", Arial, sans-serif;
+}
+
+.hero h1 span {
+  display: block;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 600px;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: "Aptos", Arial, sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .hero h1 {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+
+  .hero-content {
+    padding: 0 1rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Projects Section */
+.our-projects {
+  padding: 5rem 0;
+}
+
+.projects-container {
+  margin: auto;
+  max-width: 90%;
+  display: flex;
+  gap: 0.2rem;
+  align-items: center;
+}
+
+.p-texts p {
+  width: 40.375rem;
+  text-align: justify;
+  text-justify: inter-word;
+  padding-right: 4.375rem;
+  font-family: "Aptos";
+  font-size: 1.125rem;
+  padding-top: 1.5rem;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  font-family: "Doner";
+  font-size: 2.25rem;
+  color: #000;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+}
+
+.section-heading .highlight {
+  margin-right: 0.3rem;
+  font-family: "Doner";
+  font-size: 2.25rem;
+  color: #086189;
+  font-weight: bold;
+}
+
+.section-heading .line {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #000000;
+  margin-left: 1rem;
+  margin-right: 4.375rem;
+}
+
+.projects-images {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.2rem;
+}
+
+.project-image-container {
+  position: relative;
+  height: 33rem;
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+.projects-images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.project-image-container:hover img {
+  transform: scale(1.09);
+  opacity: 1;
+}
+
+.gradient-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 12%;
+  background: linear-gradient(to top, #086189, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 15px 15px;
+  transition: opacity 0.3s ease;
+}
+
+.project-image-container:hover .gradient-overlay {
+  opacity: 1;
+}
+
+.image-text {
+  color: white;
+  text-align: center;
+  font-size: 1.25rem;
+  font-family: "Aptos";
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .projects-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .p-texts p {
+    width: 100%;
+    padding-right: 0;
+  }
+
+  .section-heading .line {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-images {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .project-image-container {
+    height: 25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-heading {
+    font-size: 1.8rem;
+  }
+
+  .section-heading .highlight {
+    font-size: 1.8rem;
+  }
+
+  .project-image-container {
+    height: 19rem;
+  }
+}
+
+/* Slider Section */
+.slider-section {
+  position: relative;
+  height: 600px; /* Fixed height for desktop */
+  overflow: hidden;
+}
+
+.slider-container {
+  position: relative;
+  height: 100%;
+  width: 90%; /* Set width to 90% */
+  margin: 0 auto; /* Center the container */
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 2; /* Ensure active slide is on top */
+}
+
+.slide img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.slide-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  padding: 0 5%;
+  max-width: 100%;
+  text-align: center; /* Center all content */
+}
+
+.slide-content h2 {
+  font-family: "Doner", Arial, sans-serif;
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.support-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: white;
+  color: #086189;
+  text-decoration: none;
+  border-radius: 4px;
+  font-family: "Aptos", Arial, sans-serif;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin-bottom: 16rem;
+  /* Remove margin-left and use these properties instead */
+  position: relative;
+}
+
+.support-button:hover {
+  background-color: #086189;
+  color: white;
+}
+
+.slider-nav {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 3;
+}
+
+.nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-dot.active {
+  background-color: white;
+  transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .slide-content h2 {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .slide-content h2 {
+    font-size: 2rem;
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+  }
+
+  .support-button {
+    margin-bottom: 6rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide-content h2 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .support-button {
+    margin-bottom: 4rem;
+    padding: 0.7rem 1.2rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Add responsive heights for slider */
+@media (max-width: 768px) {
+  .slider-section {
+    height: 600px; /* Reduced height for tablets/mobile */
+  }
+
+  .slide-content h2 {
+    font-size: 2.8rem;
+  }
+
+  .support-button {
+    margin-bottom: 8rem; /* Adjust button position for smaller height */
+  }
+}
+
+@media (max-width: 480px) {
+  .slider-section {
+    height: 400px; /* Even smaller height for mobile phones */
+  }
+
+  .slide-content h2 {
+    font-size: 2.2rem;
+  }
+
+  .support-button {
+    margin-bottom: 5rem; /* Further adjust button position */
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+/* Shop Section */
+.shop-section {
+  padding-top: 4rem;
+}
+
+.shop-container {
+  margin: auto;
+  max-width: 90%;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.section-header h2 {
+  font-family: "Doner", Arial, sans-serif;
+  font-size: 2.25rem;
+  color: #000;
+  white-space: nowrap;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+}
+
+.section-header .line {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #000;
+}
+
+.see-more {
+  font-family: "Aptos", Arial, sans-serif;
+  color: #086189;
+  text-decoration: none;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.product-card {
+  background: #f8f8f8;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-card img {
+  width: 100%;
+  height: 25rem;
+  display: block;
+  object-fit: cover;
+}
+
+.product-info {
+  padding: 1.5rem;
+}
+
+.product-info h3 {
+  font-family: "Aptos", Arial, sans-serif;
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  font-family: "Aptos", Arial, sans-serif;
+  color: #086189;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .products-grid {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .section-header h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .product-info h3 {
+    font-size: 1rem;
+  }
+}
+
+/* Publication Section */
+.publication-section {
+  padding-top: 4rem;
+}
+
+.publication-container {
+  margin: auto;
+  max-width: 90%;
+}
+
+.publications-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.publication-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  background: white;
+}
+
+.publication-card:hover {
+  transform: translateY(-5px);
+}
+
+.publication-card img {
+  width: 100%;
+  height: 26.938rem;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+
+.publication-info {
+  padding: 1.5rem;
+  border-radius: 0 0 12px 12px;
+  background: white;
+}
+
+.pub-date {
+  font-family: "Aptos", Arial, sans-serif;
+  font-size: 0.9rem;
+  color: #666;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.publication-info h3 {
+  font-family: "Aptos", Arial, sans-serif;
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.4;
+}
+
+.video-card .video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 26.938rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+  text-decoration: none;
+}
+
+.video-card .video-overlay img {
+  width: 12rem;
+  height: 12rem;
+}
+
+.video-card:hover .video-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.play-icon {
+  transition: all 0.3s ease;
+}
+
+.play-icon img {
+  width: 20%;
+  object-fit: contain;
+}
+
+.video-card:hover .play-icon {
+  transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .publications-grid {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .publications-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .publication-card img {
+    height: 20rem;
+  }
+
+  .video-card .video-overlay {
+    height: 20rem;
+  }
+
+  .play-icon {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .publications-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .publication-card img {
+    height: 15rem;
+  }
+
+  .video-card .video-overlay {
+    height: 15rem;
+  }
+
+  .play-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .publication-info h3 {
+    font-size: 1rem;
+  }
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #2c3333;
+  color: white;
+  padding: 4rem 0 2rem;
+  margin-top: 4rem;
+}
+
+.footer-content {
+  max-width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.mailing-list {
+  margin-bottom: 3rem;
+}
+
+.mailing-list h2 {
+  font-family: "Aptos", Arial, sans-serif;
+  font-size: 2.5rem;
+}
+
+.mailing-list p {
+  font-family: "Aptos", Arial, sans-serif;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2rem;
+}
+
+.subscribe-form {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subscribe-form input {
+  flex: 1;
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 4px;
+  font-family: "Aptos", Arial, sans-serif;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.subscribe-form input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.subscribe-form button {
+  width: 9.625rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #006b8f;
+  color: white;
+  font-family: "Aptos", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.subscribe-form button:hover {
+  background-color: #00587a;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.social-icon:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.social-icon img {
+  width: 20px;
+  height: 20px;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav a {
+  color: white;
+  text-decoration: none;
+  font-family: "Aptos", Arial, sans-serif;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.copyright {
+  font-family: "Aptos", Arial, sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .mailing-list h2 {
+    font-size: 2rem;
+  }
+
+  .subscribe-form {
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+
+  .footer-nav {
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  .social-links {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mailing-list h2 {
+    font-size: 1.8rem;
+  }
+
+  .mailing-list p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .footer-nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .social-links {
+    gap: 1rem;
+  }
+}
+
+/* About Story Section */
+.about-story {
+  width: 100%;
+  padding: 0;
+  overflow: hidden; /* Contain the full-width image */
+}
+
+.story-image {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  height: 35.188rem;
+  margin-bottom: 3rem;
+}
+
+.story-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.story-image h1 {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-family: "Doner", Arial, sans-serif;
+  font-size: 2rem;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.story-content {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 0rem;
+}
+
+.story-content p {
+  font-family: "Aptos", Arial, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 2rem;
+  text-align: justify;
+}
+
+.story-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .story-image {
+    height: 30rem;
+  }
+
+  .story-image h1 {
+    font-size: 2.5rem;
+  }
+
+  .story-content p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .story-image {
+    height: 25rem;
+  }
+
+  .story-image h1 {
+    font-size: 2rem;
+  }
+
+  .about-story {
+    padding: 3rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .story-image {
+    height: 20rem;
+  }
+
+  .story-image h1 {
+    font-size: 1.8rem;
+  }
+
+  .story-content p {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-story {
+    padding: 2rem 0;
+  }
+}
+
+/* Container styles */
+.about-container,
+.supporters-container,
+.team-container,
+.events-container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 1440px; /* Optional: set a max-width if needed */
+}
+
+/* Ensure sections don't create horizontal scroll */
+.about-us,
+.supporters-section,
+.team-section,
+.events-section {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Remove Supporters Section */
+/* Events Section */
+.events-section {
+  padding-top: 4rem;
+}
+
+.events-container {
+  margin: auto;
+  max-width: 90%;
+}
+
+.events-section .section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.events-section .section-header h2 {
+  font-family: "Doner", Arial, sans-serif;
+  font-size: 2.25rem;
+  color: #000;
+  white-space: nowrap;
+}
+
+.events-section .section-header .line {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #000;
+  margin: 0 1rem;
+}
+
+.events-grid {
+  display: flex;
+  gap: 2rem;
+}
+
+.event-card {
+  flex: 1;
+  background: #006b8f;
+  border-radius: 12px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  color: white;
+}
+
+.event-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+}
+
+.event-date .day {
+  font-family: "Aptos", Arial, sans-serif;
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: bold;
+}
+
+.event-date .month {
+  font-family: "Aptos", Arial, sans-serif;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.event-info {
+  flex: 1;
+}
+
+.event-label {
+  font-family: "Aptos", Arial, sans-serif;
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+}
+
+.event-info h3 {
+  font-family: "Aptos", Arial, sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  font-weight: 500;
+  margin: 0;
+}
+
+.event-arrow {
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.event-arrow:hover {
+  transform: translateX(5px);
+}
+
+.event-arrow img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .events-grid {
+    gap: 1.5rem;
+  }
+
+  .event-card {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .events-grid {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .event-card {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .event-date .day {
+    font-size: 2.5rem;
+  }
+
+  .event-date .month {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .event-card {
+    padding: 1.2rem;
+    gap: 1rem;
+  }
+
+  .event-date {
+    min-width: 60px;
+  }
+
+  .event-date .day {
+    font-size: 2rem;
+  }
+
+  .event-info h3 {
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+
+  .event-arrow {
+    width: 32px;
+    height: 32px;
+  }
+
+  .event-arrow img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Supporters Section */
+.supporters-section {
+  padding-top: 4rem;
+}
+
+.supporters-container {
+  margin: auto;
+  max-width: 90%;
+}
+
+.supporters-section .section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+
+.supporters-section .section-header h2 {
+  font-family: "Doner", Arial, sans-serif;
+  font-size: 2.25rem;
+  color: #000;
+  white-space: nowrap;
+}
+
+.supporters-section .section-header .line {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #000;
+  margin: 0 1rem;
+}
+
+.supporters-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2rem;
+}
+
+.supporter-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.supporter-card img {
+  width: 100%;
+  max-width: 100px;
+  height: auto;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.supporter-card:hover img {
+  opacity: 1;
+}
+
+.supporter-card h3 {
+  font-family: "Aptos", Arial, sans-serif;
+  font-size: 1rem;
+  color: #666;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .supporters-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .supporters-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .supporter-card img {
+    max-width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .supporter-card img {
+    max-width: 60px;
+  }
+
+  .supporter-card h3 {
+    font-size: 0.9rem;
+  }
+}
+
+/* About Us Section */
+.about-us {
+  padding-top: 4rem;
+}
+
+.about-container {
+  margin: auto;
+  max-width: 90%;
+  display: flex;
+  gap: 4rem;
+}
+
+.about-content {
+  flex: 1;
+  max-width: 50%;
+}
+
+.about-content .section-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.about-content .section-header h2 {
+  font-family: "Doner", Arial, sans-serif;
+  font-size: 2.25rem;
+  color: #000;
+  white-space: nowrap;
+}
+
+.about-content .section-header .line {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #000;
+  margin-left: 1rem;
+}
+
+.about-content p {
+  font-family: "Aptos", Arial, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 3rem;
+  text-align: justify;
+}
+
+.vision-mission {
+  display: flex;
+  gap: 4rem;
+  background: #f8f8f8;
+  padding: 0.5rem;
+  border-radius: 12px;
+  position: relative;
+}
+
+/* Add separator line */
+.vision-mission::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 2rem;
+  bottom: 2rem;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 0, 0, 0.1) 20%,
+    rgba(0, 0, 0, 0.1) 80%,
+    transparent
+  );
+}
+
+/* Adjust responsive styles for the separator */
+@media (max-width: 768px) {
+  .vision-mission::after {
+    left: 2rem;
+    right: 2rem;
+    top: 50%;
+    height: 1px;
+    width: auto;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(0, 0, 0, 0.1) 20%,
+      rgba(0, 0, 0, 0.1) 80%,
+      transparent
+    );
+  }
+}
+
+.vision,
+.mission {
+  flex: 1;
+}
+
+.vision-icon,
+.mission-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.vision img,
+.mission img {
+  width: 7.375rem;
+  height: 7.375rem;
+}
+
+.vision h3,
+.mission h3 {
+  font-family: "Aptos", Arial, sans-serif;
+  font-size: 1.25rem;
+  color: #000;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.vision p,
+.mission p {
+  font-family: "Aptos", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+  margin: 0;
+  text-align: left;
+}
+
+.about-image {
+  flex: 1;
+  max-width: 50%;
+  position: relative;
+}
+
+.about-image img {
+  width: 100%;
+  height: 51.169rem; /* 818.7px converted to rem */
+  object-fit: cover;
+  border-radius: 0 12rem 0 12rem;
+}
+
+.donation-box {
+  position: absolute;
+  bottom: 6rem;
+  left: -9rem;
+  background: rgba(44, 51, 51, 0.8);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  color: white;
+  backdrop-filter: blur(1px);
+  width: 18.5rem;
+  height: 8.563rem;
+}
+
+.donation-box h3 {
+  font-family: "Aptos", Arial, sans-serif;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  letter-spacing: 0rem;
+  font-weight: 300;
+}
+
+.donation-box .amount {
+  font-family: "Aptos", Arial, sans-serif;
+  font-size: 1.875rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  color: white;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.donation-box p {
+  font-family: "Aptos", Arial, sans-serif;
+  font-size: 0.813rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .about-container {
+    gap: 3rem;
+  }
+
+  .about-content,
+  .about-image {
+    max-width: 50%;
+  }
+
+  .donation-box {
+    left: -4rem;
+    min-width: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+  }
+
+  .about-content,
+  .about-image {
+    max-width: 100%;
+  }
+
+  .vision-mission {
+    gap: 2rem;
+    padding: 1.5rem;
+  }
+
+  .about-image img {
+    height: 30rem;
+    border-radius: 0 6rem 0 6rem;
+  }
+
+  .donation-box {
+    position: absolute;
+    left: 50%;
+    bottom: 2rem;
+    transform: translateX(-50%);
+    min-width: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-content p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .vision-mission {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1.25rem;
+  }
+
+  .vision,
+  .mission {
+    text-align: center;
+  }
+
+  .vision p,
+  .mission p {
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  .about-image img {
+    height: 25rem;
+    border-radius: 0 3rem 0 3rem;
+  }
+
+  .donation-box {
+    width: calc(100% - 2rem);
+    left: 1rem;
+    transform: none;
+    bottom: 1rem;
+    min-width: auto;
+  }
+
+  .donation-box .amount {
+    font-size: 2rem;
+  }
+}
+
+/* Team Section */
+.team-section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.team-container {
+  margin: auto;
+  max-width: 90%;
+}
+
+.team-members-container {
+  border-radius: 15px;
+  padding: 2.5rem;
+  margin-top: 1rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+}
+
+.team-member {
+  position: relative;
+}
+
+.member-image {
+  width: 12rem; /* 192px */
+  height: 15.875rem; /* 254px */
+  overflow: hidden;
+  border-radius: 0.5rem;
+  position: relative;
+}
+
+.member-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.member-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  padding: 1rem;
+  text-align: center;
+}
+
+.member-info h3 {
+  font-family: "Aptos", Arial, sans-serif;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+  color: white;
+  text-transform: uppercase;
+}
+
+.member-info .position {
+  font-family: "Aptos", Arial, sans-serif;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+  display: block;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .team-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .member-image {
+    width: 100%;
+    height: 15rem;
+  }
+
+  .member-info {
+    padding: 0.75rem;
+  }
+
+  .member-info h3 {
+    font-size: 0.9rem;
+  }
+
+  .member-info .position {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .member-image {
+    width: 100%;
+    height: 13rem;
+  }
+
+  .member-info {
+    padding: 0.5rem;
+  }
+
+  .member-info h3 {
+    font-size: 0.85rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .member-info .position {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-members-container {
+    padding: 1.5rem;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .member-image {
+    width: 100%;
+    height: 11rem;
+  }
+
+  .member-info {
+    padding: 0.4rem;
+  }
+
+  .member-info h3 {
+    font-size: 0.75rem;
+    margin-bottom: 0.1rem;
+  }
+
+  .member-info .position {
+    font-size: 0.65rem;
+  }
+}
